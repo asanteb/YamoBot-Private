@@ -29,6 +29,6 @@ class PostTweet
   end
 
   FirstPost = PostTweet.new
-  FirstPost.post_tweet "Hello time to spam twitter"
+  FirstPost.post_tweet "hmmm"
 
 end

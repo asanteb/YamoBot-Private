@@ -54,20 +54,17 @@ class LikeList
 
   address = URI("#{api_url}#{command_url}")
 
-  # address = URI("#{address}?count=#{num_of_tweets}&screen_name=#{user_id}") if user_id
-  # Ruby way of an if statement without creating a block
 
-  if user_id # IF user_id has anything run this function (!= nil)
+
+  if user_id
     address = URI("#{address}?count=#{num_of_tweets}&screen_name=#{user_id}")
   end
 
-  if screen_name #same
+  if screen_name
     address = URI("#{address}?count=#{num_of_tweets}&screen_name=#{screen_name}")
   end
 
   request = Net::HTTP::Get.new address.request_uri
-
-
   authReq = TLS.new
   response = authReq.connect_req(address, request)
 
@@ -78,8 +75,9 @@ class LikeList
 end
 
 
-  MyList = LikeList.new
-  json_body = MyList.getList(5, nil, "OfficialElethal")
+  #MyList = LikeList.new
+  #json_body = MyList.getList(5, nil, "OfficialElethal")
+  #File.open("tweets.json", 'w') {|f| f.write(json_body) }
 
-  File.open("tweets.json", 'w') {|f| f.write(json_body) }
-
+new_like = Like.new
+new_like.likeTweet("734744294939070464")

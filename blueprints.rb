@@ -1,8 +1,8 @@
 
 class Blueprints
+
   def getAPI_URL
     @url = "https://api.twitter.com"
-
   end
 
   def getTweetPost_URL
@@ -31,6 +31,10 @@ class Blueprints
 
   def getFollowerComparison_URL
     #@url = "/1.1/friendships/destroy.json"
+  end
+
+  def getMessage_URL
+    @url = "/1.1/direct_messages/new.json"
   end
 
 end
