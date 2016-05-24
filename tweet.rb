@@ -4,8 +4,7 @@ require 'net/http'
 require 'net/https'
 require 'uri'
 load 'blueprints.rb'
-load 'config-oauth.rb'
-load 'tls.rb'
+load "tls.rb"
 
 
 class PostTweet
@@ -29,6 +28,6 @@ class PostTweet
   end
 
   FirstPost = PostTweet.new
-  FirstPost.post_tweet "hmmm"
+  FirstPost.post_tweet "poop"
 
 end

@@ -4,6 +4,7 @@ require 'json'
 require 'net/http'
 require 'net/https'
 require 'uri'
+load "config-oauth.rb"
 
 
 class TLS
@@ -26,30 +27,17 @@ class TLS
     #puts "Enter Access Secret"
     #acc_sec = gets
 
-    auth = Array.new(4)
-
-    File.open("auth.temp", "r")
-    auth.each do |line, index|
-      auth = line
-      puts "#{line}"
-    end
 
     authenticator = USER_OAUTH.new
-    consumer_key = authenticator.getConsumerKey(auth.at(0), auth.at(1))
-    access_token = authenticator.getAccessToken(auth.at(2), auth.at(3))
-=begin
-    consumer_key = authenticator.getConsumerKey("ZFLvIdkjS3sxwVtT15wjb4TOW",
-                                                "WWN5DfCx7RfAUNuCQgxvmc3USvMAWPjxLqdLSr9u11kNP92Z2B")
-    access_token = authenticator.getAccessToken("117545816-JgPzKxG4kUbFJK30ZLAA98VRICKZtIMEu8J8wlMD",
-=end                                              #  "uMWFd8nfFJZR0a7UxNUR9AFB9Yn0VdoN72PJENy7AKGVz")
-
+    consumer_key = authenticator.getConsumerKey
+    access_token = authenticator.getAccessToken
 
     request.oauth! http, consumer_key, access_token
     http.start
 
    @response = http.request request #sends body response to classes that might use it
 
-    File.open("response.txt", 'w') {|f| f.write(@response) }
+    #File.open("response.txt", 'w') {|f| f.write(@response) }
 
   end
 end
